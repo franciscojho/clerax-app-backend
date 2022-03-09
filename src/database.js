@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const connect = () => {
     console.log('connecting')
-    mongoose.connect('mongodb://admin:root@localhost:27017/clerax?authSource=admin', {
+    mongoose.connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
     })
     mongoose.connection.once('open', () => {

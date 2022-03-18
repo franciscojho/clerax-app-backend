@@ -15,12 +15,11 @@ router.post(
         check('email', 'El email es requerido').isEmail(),
         check('email').custom(validateUserEmail),
         check('dni', 'El DNI es requerido'),
-        check('address', 'La dirección es requerida'),
+        check('mobile', 'El celular es requerido'),
         check(
             'password',
             'La contraseña debe contener mínimo ocho carácteres y un número'
         ).matches(regex),
-        check('userType').isIn(['CLIENT', 'WORKER']),
         validateFields,
     ],
     signUp
@@ -36,7 +35,6 @@ router.post(
             'password',
             'La contraseña debe contener mínimo ocho carácteres y un número'
         ).matches(regex),
-        check('userType').isIn(['CLIENT', 'WORKER']),
         validateFields,
     ],
     signIn

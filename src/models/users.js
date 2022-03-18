@@ -14,21 +14,16 @@ const UserSchema = new Schema(
             required: [true, 'The email is required'],
         },
         dni: {
-            type: String,
+            type: Number,
             required: [true, 'The dni is required'],
         },
-        address: {
-            type: String,
-            required: [true, 'The address is required'],
+        mobile: {
+            type: Number,
+            required: [true, 'The mobile is required'],
         },
         password: {
             type: String,
             required: [true, 'The password is required'],
-        },
-        userType: {
-            type: String,
-            enum: ['CLIENT', 'WORKER'],
-            required: [true, 'The user type is required'],
         },
     },
     {

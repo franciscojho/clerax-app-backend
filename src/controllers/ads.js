@@ -48,15 +48,9 @@ const updateAd = async (req, res) => {
         const { id } = req.params
         const { _id: userId } = req.user
 
-        console.log('body', req.body)
-        console.log('adId', id)
-        console.log('userId', userId)
-
         const ad = await Ad.findByIdAndUpdate({ _id: id, user: userId }, req.body, {
             new: true,
         })
-
-        console.log({ ad })
 
         if (!ad) {
             res.status(403).json({ message: `Ad with id ${id} not found` })

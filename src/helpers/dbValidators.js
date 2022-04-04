@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import User from '../models/users.js'
+import User from '../models/user.js'
 
 const validateUserEmail = async (email, { req }) => {
     const user = await User.findOne({ email })

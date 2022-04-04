@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-const { Schema, model, models } = mongoose
+const { Schema, model, SchemaTypes } = mongoose
 
 const UserSchema = new Schema(
     {
@@ -25,6 +25,13 @@ const UserSchema = new Schema(
             type: String,
             required: [true, 'The password is required'],
         },
+        ads: [
+            {
+                type: SchemaTypes.ObjectId,
+                required: true,
+                ref: 'Ad',
+            },
+        ],
     },
     {
         timestamps: true,

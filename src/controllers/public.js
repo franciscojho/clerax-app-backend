@@ -7,6 +7,7 @@ export const getAllAds = async (req, res) => {
         const { query } = req
         const { radioFilter, department, province, district } = query
         const criteria = {
+            expired: false,
             ...(department && { region: department }),
             ...(province && { province: province }),
             ...(district && { city: district }),

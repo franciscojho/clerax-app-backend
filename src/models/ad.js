@@ -48,10 +48,9 @@ const AdSchema = new Schema(
             type: String,
             required: [true, 'The addressReference is required'],
         },
-        status: {
-            type: String,
-            enum: ['active', 'inactive'],
-            required: [true, 'The status is required'],
+        expired: {
+            type: Boolean,
+            default: false,
         },
         user: {
             type: SchemaTypes.ObjectId,

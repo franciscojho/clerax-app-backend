@@ -5,6 +5,7 @@ import cors from 'cors'
 import authRouter from './routes/auth.js'
 import usersRouter from './routes/users.js'
 import { adRouter } from './routes/ads.js'
+import { publicRouter } from './routes/public.js'
 
 dotenv.config()
 connect()
@@ -25,6 +26,8 @@ app.use('/api/auth', authRouter)
 app.use('/api/user', usersRouter)
 
 app.use('/api/adverts', adRouter)
+
+app.use('/api/public', publicRouter)
 
 app.listen(port, () => {
     console.log(`Server starting at port ${port}`)

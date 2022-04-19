@@ -33,7 +33,7 @@ const createAd = async (req, res) => {
 
         if (!user) throw new Error('User not found')
 
-        const ad = await Ad.create({ ...body, status: 'active', user: userId })
+        const ad = await Ad.create({ ...body, user: userId })
         user.ads.push(ad._id)
         await user.save({ validateBeforeSave: false })
 

@@ -3,15 +3,30 @@ import User from '../models/user.js'
 
 const getAds = async (req, res) => {
     try {
+        const { query } = req
         const userId = req.user._id
         let message = 'No ads found'
+        let criteria = {}
         let count = 0
+
+        switch (query.filter) {
+            case 'expired':
+                criteria = { expired: true }
+                break
+
+            case 'active':
+                criteria = { expired: false }
+                break
+
+            default:
+                break
+        }
 
         const user = await User.findById(userId)
 
         if (!user) throw new Error('User not found')
 
-        const ads = await Ad.find({ user: userId })
+        const ads = await Ad.find({ user: userId, ...criteria })
 
         if (ads.length > 0) {
             message = 'Ads found'

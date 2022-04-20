@@ -13,7 +13,7 @@ export const getAllAds = async (req, res) => {
             ...(district && { city: district }),
             ...(radioFilter && { rate: parserRateQuery(radioFilter) }),
         }
-        const ads = await Ad.find(criteria)
+        const ads = await Ad.find(criteria).sort({ createdAt: -1 })
         const adsPromises = ads.map(async (ad) => {
             const user = await User.findById(ad.user)
             return { ...ad._doc, user: { name: user.fullName, mobile: user.mobile } }

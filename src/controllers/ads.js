@@ -26,7 +26,7 @@ const getAds = async (req, res) => {
 
         if (!user) throw new Error('User not found')
 
-        const ads = await Ad.find({ user: userId, ...criteria })
+        const ads = await Ad.find({ user: userId, ...criteria }).sort({ createdAt: -1 })
 
         if (ads.length > 0) {
             message = 'Ads found'
